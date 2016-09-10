@@ -1,0 +1,58 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+__construct	class.textExtract.php	/^	function __construct( $_url, $_blkSize = 3 ) {$/;"	f
+blkLen	class.textExtract.php	/^			$blkLen = $this->blksLen[$i - 1] + strlen( $this->textLines[$i - 1 + $this->blkSize] ) - strlen( $this->textLines[$i - 1] );$/;"	v
+blkLen	class.textExtract.php	/^		$blkLen = 0;$/;"	v
+blkNum	class.textExtract.php	/^		$blkNum = count( $this->blksLen );$/;"	v
+blkSize	class.textExtract.php	/^		$this->blkSize = $_blkSize;$/;"	v
+blkSize	class.textExtract.php	/^	public $blkSize;$/;"	v
+blksLen	class.textExtract.php	/^	public $blksLen     = array();$/;"	v
+calBlocksLen	class.textExtract.php	/^	function calBlocksLen() {$/;"	f
+content	class.textExtract.php	/^		$content = $this->rawPageCode;$/;"	v
+content	class.textExtract.php	/^		$content = preg_replace( $pattern, $replacement, $content );$/;"	v
+curTextLen	class.textExtract.php	/^			$curTextLen = 0;$/;"	v
+end	class.textExtract.php	/^				$end = $i - 1;$/;"	v
+getPageCode	class.textExtract.php	/^	function getPageCode() {$/;"	f
+getPlainText	class.textExtract.php	/^	function getPlainText() {$/;"	f
+getTextLines	class.textExtract.php	/^	function getTextLines( $rawText ) {$/;"	f
+i	class.textExtract.php	/^		$i = $maxTextLen = 0;$/;"	v
+isGB	class.textExtract.php	/^			$this->isGB = false;$/;"	v
+isGB	class.textExtract.php	/^			$this->isGB = true;$/;"	v
+isGB	class.textExtract.php	/^	public $isGB;$/;"	v
+lines	class.textExtract.php	/^		$lines = explode( '\\n', $rawText );$/;"	v
+maxTextLen	class.textExtract.php	/^				$maxTextLen = $curTextLen;$/;"	v
+order	class.textExtract.php	/^		$order = array( "\\r\\n", "\\n", "\\r" );$/;"	v
+pattern	class.textExtract.php	/^		$pattern = '\/&.{1,5};|&#.{1,5};\/';$/;"	v
+pattern	class.textExtract.php	/^		$pattern = '\/<!--.*?-->\/s';$/;"	v
+pattern	class.textExtract.php	/^		$pattern = '\/<!DOCTYPE.*?>\/si';$/;"	v
+pattern	class.textExtract.php	/^		$pattern = '\/<.*?>\/s';$/;"	v
+pattern	class.textExtract.php	/^		$pattern = '\/<script.*?>.*?<\\\/script>\/si';$/;"	v
+pattern	class.textExtract.php	/^		$pattern = '\/<style.*?>.*?<\\\/style>\/si';$/;"	v
+pattern	class.textExtract.php	/^		$pattern = '\/charset(\\s*?)=(\\s*?)(.*?)"\/i';$/;"	v
+portion	class.textExtract.php	/^			$portion = '';$/;"	v
+preProcText	class.textExtract.php	/^		$preProcText = $this->preProcess();$/;"	v
+preProcess	class.textExtract.php	/^	function preProcess() {$/;"	f
+procEncoding	class.textExtract.php	/^	function procEncoding() {$/;"	f
+rawPageCode	class.textExtract.php	/^			$this->rawPageCode = preg_replace( $pattern, $replacement, $this->rawPageCode );$/;"	v
+rawPageCode	class.textExtract.php	/^		$this->rawPageCode = file_get_contents( $this->url );$/;"	v
+rawPageCode	class.textExtract.php	/^	public $rawPageCode = '';$/;"	v
+rawText	class.textExtract.php	/^		$rawText = str_replace( $order, $replace, $rawText );$/;"	v
+replace	class.textExtract.php	/^		$replace = '\\n';$/;"	v
+replacement	class.textExtract.php	/^			$replacement = 'charset=GBK"';$/;"	v
+replacement	class.textExtract.php	/^		$replacement = '';$/;"	v
+start	class.textExtract.php	/^				$start = $tmp;$/;"	v
+start	class.textExtract.php	/^		$start = $end = -1;$/;"	v
+text	class.textExtract.php	/^				$this->text = $portion;$/;"	v
+text	class.textExtract.php	/^	public $text        = '';$/;"	v
+textExtract	class.textExtract.php	/^class textExtract {$/;"	c
+textLineNum	class.textExtract.php	/^		$textLineNum = count( $this->textLines );$/;"	v
+textLines	class.textExtract.php	/^	public $textLines   = array();$/;"	v
+tmp	class.textExtract.php	/^			$tmp = $i;$/;"	v
+tmp	class.textExtract.php	/^			$tmp = preg_replace( '\/\\s+\/s', '', $line );$/;"	v
+tmp	class.textExtract.php	/^		$tmp = substr( $matches[3], 0, 2 );$/;"	v
+url	class.textExtract.php	/^		$this->url = $_url;$/;"	v
+url	class.textExtract.php	/^	public $url         = '';$/;"	v

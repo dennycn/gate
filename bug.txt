@@ -1,0 +1,42 @@
+18:11 2011-8-10
+1) apache log
+时间    xxx     请求行(method+url+protocol) User-Agent 状态位 主机 PID  Referer 用时    字节数  X-Forwarded-F
+LogFormat "%t###%{X-UP-CALLING-LINE-ID}i###%r###%{User-Agent}i###%>s###%h###%P###%{Referer}i###%T###%b###%{X-Forwarded-F        or}i" isdn
+[08/Aug/2011:14:58:19 +0800]###-###GET /gate/go.php?url=http://www.hljpps.com/news/content.asp?id=377 HTTP/1.1###-###200###61.145.124.102###17258###-###8###8900###-
+
+2) script 
+grep "go.php" 192.168.114.123_15_3gyy_access_log | grep '\-###\-$'
+tail -f 192.168.114.123_14_3gyy_access_log |grep "go.php"
+================================================
+http://61.145.124.181/gate/go.php?url=
+http://192.168.1.97/tmp/url
+
+
+出错的情况
+1)远程本地能够下载转换，但通过网络访问数据传输不到本地。(转换文本不通过表单可以获取test.php，通过CGI则长度不对）如
+//实为编码转换错误，本地浏览器会自动检测编码并显示。（ ok, 已解决 )
+http://gzhowo.cn.gongchang.com/
+http://www.shbkcs.com/HTML/201001/Content_15669.asp
+http://www.ruian123.com/E_lei.asp?Cid=95
+http://www.paoyu.net/soft-list-21-1-3531.html
+http://hbkxx.cn21edu.com/
+http://www.rcslj.cn/index.php
+http://www.3gsou.com/list.aspx?st=2&s=%e6%88%91%e7%9a%84%e8%ae%b0%e4%ba%8b%e6%9c%ac+MyNotes+v1.2.3
+
+2)file_get_content 403 forbidden, 但用curl可以下载。（更改下载库, pause)
+http://www.ccithr.com/zhuangyang/rhrnrbc/6142.html
+
+3)原始页面无效 (去除，无需处理，约有300条左右. ok)
+http://219.148.61.87:82/ycxx2/03/JJ_XK02_NJ03/ZY20080220102754468/WBZY/SC20080220135545109.mht
+http://software.csu.edu.cn/rjgc/download/%C8%ED%BC%FE%B9%A4%B3%CC%BE%AB%C6%B7%BF%CE%B3%CC%C9%EA%B1%A8%B1%ED.pdf
+http://rcfzxtm.39.net/
+
+4) 原始页面站点太慢，下载超时 （>30s)  (线下下载，pause)
+http://hospital.dfhon.com/1374/zjjs.shtml  （页面指明编码，实际编码是UTF-8）
+
+5) frame编码不统一：frame内容为utf-8, frame外为gbk. (不支持，去除. ok)
+http://web.chenzhou.gov.cn/topic.asp?id=6643
+
+6) 小说
+a) 小说内容页为图片
+http://www.dazhouhuangzu.net/mulu/0/154/60637.html

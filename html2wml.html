@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>Html2Wml Test Page</title>
+
+<style type="text/css">
+  BODY { background-color: #FFFFFF }
+  BODY, TD, TH, P { font-family: arial, helvetica, sans-serif }
+  P { width: 15cm }
+</style>
+</head>
+
+<body>
+
+<h1>Html2Wml Test Page</h1>
+
+<p>This page illustrates how to call Html2Wml from an HTML form. 
+It also shows that most of the options of Html2Wml can be used in 
+CGI mode. </p>
+
+<p>If you uncheck the "Debug" option, the result will be sent as 
+a real WML deck, which is not viewable with standard web browsers. </p>
+
+<form action="/gate/html2wml.cgi" method="GET">
+<table> <tr> <td style="background-color: #DDDDDD">
+<table> 
+<tr> <th colspan="3" style="background-color: #BBBBBB">Html2Wml Options</th> </tr>
+<tr>
+  <td colspan="3"> Url: <input name="url" type="text" size="60" value="http://www.163.com/" > </td>
+</tr>
+<tr>
+  <td> Page Size: <input name="s" type="text" size="10" value="10240"/> </td>
+</tr>
+<tr>
+  <td><input name="d" value="1" type="checkbox" />Debug mode</td>
+</tr>
+<tr>
+  <td><input name="a" value="1" type="checkbox" />Use ASCII emulation</td>
+  <td></td>
+</tr>
+<tr>
+  <td colspan="2">
+  <input name="n" value="1" type="checkbox" />Convert non-ASCII characters to numeric entities
+  </td>
+</tr>
+<tr>
+  <td colspan="2">
+  <input name="collapse" value="0" type="checkbox" />Don't collapse spaces and empty paragraphs
+  </td>
+</tr>
+<tr>
+  <td><input name="linearize" value="0" type="checkbox" />Don't linearize tables </td>
+  <td><input name="p" value="1" type="checkbox" />Don't use PRE tag </td>
+  </td> 
+  <td> <input type="submit" value="Convert" /> </td>
+</tr>
+</table>
+</td> </tr> </table>
+</form>
+
+</body>
+</html>
