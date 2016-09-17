@@ -1,0 +1,74 @@
+2011-7-15
+
+---------------------------------------
+安装说明:
+perl module need:
+    XML:Checker
+    TEXT:Template
+    CGI
+
+windows下可使用ppm安装。
+
+---------------------------------------
+帮助说明：
+详见： http://www.html2wml.org/docs/readme.html 
+usage: $0 [options] file [-o output]
+options: 
+  -a, --ascii               use 7 bits ASCII emulation to convert named entities
+      --nocollapse          don't collapse spaces and empty paragraphs
+      --hreftmpl=template   set the template for the links reconstruction engine
+  -i, --ignore-images       completly ignore image links
+      --noimg-alt-text      don't replace the images by their alternative text
+      --nolinearize         don't linearize the tables
+  -n, --numeric-non-ascii   convert non-ASCII characters to numeric entities
+  -p, --nopre               don't use the <pre> tag
+  
+      --split-card                  slice the document by cards (default)
+      --split-deck                  slice the document by decks
+  -s, --max-card-size=size          set the card size upper limit
+  -t, --card-split-threshold=size   set the card splitting threshold 
+      --next-card-label=label       set the label of the link to the next card
+      --prev-card-label=label       set the label of the link to the previous card
+
+  -U, --http-user           set the HTTP user
+  -P, --http-passwd         set the HTTP password
+  
+  -Y, --proxy               use proxy settings provided by environnement
+      --noproxy             don't use proxy
+  
+  -k, --compile             compile the result in binary form
+  -o, --output=outfile      select the outpout (stdout if none specified)
+   
+  -d, --debug=n     activate the debug mode (always prints to stdout)
+  -c, --xmlcheck    activate the XML well-formedness and validity check
+  
+  -h, --help        show this help screen and exit
+  -v, --version     show the program name and version and exit
+
+
+---------------------------------------
+调试说明：
+1) htmltowml可以是CGI也可以是本地运行。
+2) 可以先本地调试成功，再考虑CGI方式。（先易后难，循序而渐进）
+
+
+---------------------------------------
+FAQ:
+Q1 gb2312或GBK.ENC未找到
+solution:
+1) 下载 ftp://ftp.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WINDOWS/CP936.TXT
+2).安装 XML::Encoding 模块,该模块自带两个脚本 make_encmap 和 compile_encoding可以用来生成码表文件
+3).运行以下命令生成 gbk.encmap
+    make_encmap GBK CP936.TXT > GBK.encmap
+4).在生成的 GBK.encmap 文件的第一行加上 expat='yes' 这一句 如：<encmap name='GBK' expat='yes'>
+5).运行以下命令生成 gbk.enc
+    compile_encoding -o gbk.enc GBK.encmap
+最后复制 gbk.enc、gb2312.enc文件 到 %Perl所在目录%\site\lib\XML\Parser\Encodings 下
+
+Q2 cgi中perl找不到路径
+solution: 修改脚本声明为 #! perl, 
+这样无论是linux/windows,只要perl的路径在环境变量中，都能识别出来。注:env windows无此命令。
+
+Q3: cgi_options不能将分隔符;改为&,否则会出错。
+
+

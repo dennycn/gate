@@ -1,0 +1,584 @@
+Denny Version
+2011.07.01
+  form.html: add pagesize
+  html2wml.cgi: set no proxy
+
+
+
+
+VERSION HISTORY
+    v0.4.11, 2003.10.26 - 14:58
+        extended the effet of --ascii: now also converts non-ASCII
+        characters to ASCII equivalents
+
+        updated Html2cHtml with the code from Html2Wml 0.4.11
+
+    v0.4.11b2, 2003.02.14 - 01:00
+        added support for <base href="..."> in CGI mode
+
+    v0.4.11b1, 2003.02.11 - 02:00
+        corrected mishandling of URLs in xlate_url() and split_card()
+
+        added option -i as an alias for --ignore-images; also available in
+        CGI mode
+
+    v0.4.10, Wednesday, 27th November 2002, 20:32
+        corrected a bug in the man page (Werner Heuser)
+
+    v0.4.10b6, Sunday, 24th November 2002, 16:54
+        added first hooks support for HTML form conversion; supported inputs
+        are: text, password, hidden and select
+
+    v0.4.10b5, Saturday, 9th November 2002, 0:51
+        added support for internal hardcoding of proxy server
+
+    v0.4.10b4, Monday, 4th novembern 2002, 19:18
+        added missing proxy support (Frank Schwarz)
+
+    v0.4.10b4.chtml.03, Sunday, 3rd November, 2002, 2:48
+        in Html2cHtml: the split_card() function has been partially fixed,
+        but as I'm not satisfied with it (and it's may be impossible in
+        cHTML the same way as in WML), the document splitting has been
+        completly disabled
+
+    v0.4.10b4, Thursday, 31st October, 2002, 20:19
+        added a default "encoding" parameter (valued to "iso-8859-1")
+
+    v0.4.10b4, Wednesday, 30th October, 2002, 1:42
+        added a test to prevent incorrect auto-nesting (i.e.: <p><p>...);
+        was also introduced a "unique" attribute in the tags tree
+
+    v0.4.10b4, Tuesday, 29th October, 2002, 2:10
+        corrected a bug in the syntax repair engine (reverse tags were
+        incorrectly added) (signaled by Werner heuser)
+
+    v0.4.10b3, Saturday, 28th September, 2002, 17:10
+        added the "skip"/"end_skip" actions
+
+        added the "for" action parameter
+
+    v0.4.10b3, (don't remember when)
+        in comment_tag() handler: the "include" and "fsize" actions now take
+        into account the size of the text being added to the output
+
+    v0.4.10b2, Thursday, 27th June, 2002, 0:37
+        xlate_url(): fixed two big bugs the URL translation in CGI mode
+
+    v0.4.10b2, Sunday, 9th June, 2002, 18:41
+        just saw that Getopt::Long::config() is deprecated; replaced by
+        Getopt::Long::Configure()
+
+    v0.4.10b1, Friday, 5th April, 2002, 20:20
+        get_url(): fixed a stupid bug in the output (Ouyang)
+
+    v0.4.10b1, Friday, 5th April, 2002, 2:20
+        in start_tag() handler: rewrote the part of the syntax repair engine
+        that tries to insert the good tags in order to restore a valid
+        nesting; thanks for Ouyang for pointing me to the base of the
+        problem
+
+    v0.4.9, Sunday, 24th February, 2002, 16:12
+        cgi_error(): changed the output so that the version number is
+        printed
+
+    v0.4.9, Monday, 14th January, 2002, 23:44
+        corrected a bug pointed by Werner Heuser: other schemes were messed
+        up
+
+    v0.4.8, Thursday, 27th December, 2001, 2:02
+        removed the XML::LibXML validation test as it is currently too
+        unstable (it always segfaults when the doc is not valid..)
+
+    v0.4.8, Tuesday, 25th December, 2001, 13:25
+        added a small optimization when correcting incorrect entities
+
+    v0.4.8b4, Thursday, 13th December, 2001, 21:23
+        updated the security fix in get_url(); now "file:" schemes are also
+        forbidden in the LWP UserAgent
+
+    v0.4.8b3, Tuesday, 27th November, 2001, 0:45
+        completed URL encoding
+
+    v0.4.8b3, Tuesday, 27th November, 2001, 23:30
+        tracked down and corrected a bug that occured with certain files:
+        split_card() was incorrectly called in some cases
+
+        unknown entities are now converted in order to keep the document
+        well-formed
+
+    v0.4.8b3, Tuesday, 27th November, 2001, 22:35
+        paths in include actions can now be relative
+
+        several special characters are escaped in URLs
+
+    v0.4.8b3, Sunday, 25th November, 2001, 18:46
+        align attribute are now always converted to lower case
+
+    v0.4.8b2, Thursday, 22nd November, 2001, 2:03
+        corrected several braindead bugs: upper case <title> weren't
+        recognized; links conversion was broken in CGI mode; plus a few
+        other stupid bugs
+
+        added warnings in read_file() and get_url()
+
+    v0.4.8b2, Wednesday, 21st November, 2001, 20:43
+        corrected a security issue pointed by Jukka Salomaa; URLs with the
+        "file:" scheme are now forbidden
+
+    v0.4.8b1, Wednesday, 21st November, 2001, 1:18
+        corrected a bug in the cgi mode: options weren't kept through the
+        links
+
+        changed some parts of the code to try to gain speed
+
+        accidentaly corrected a bug in CGI mode :-)
+
+    v0.4.7r2, Wednesday, 14th November, 2001, 0:25
+        corrected mistakes in the package
+
+        small bug corrected
+
+    v0.4.7, Sunday, 11th November, 2001, 20:42
+        documentation updates
+
+        Html2Wml comment deleted
+
+    v0.4.7, Sunday, 11th November, 2001, 2:01
+        convert_entities(): corrected a small bug
+
+    v0.4.7, Saturday, 10th November, 2001, 23:11
+        added small optimizations in the URLs constructions
+
+    v0.4.7, Friday, 9th November, 2001, 1:03
+        documentation has been updated
+
+        added a workaround: wmlc doesn't like &lt; in attributes
+
+    v0.4.7, Wednesday, 7th November, 2001, 22:15
+        WML compilation now correctly works
+
+    v0.4.7, Thursday, 2nd November, 2001, 1:21
+        corrected several minor things
+
+    v0.4.7 beta 2, Thursday, 1st November, 2001, 16:23
+        end() handler: the card tag now cleans up the stack; the prev link
+        is added before the last card tag
+
+        output handling didn't work, it's corrected now
+
+        usage message has been updated
+
+        small optimization in the generation of the static part of self URLs
+        in CGI mode
+
+        corrected a small bug in the entities conversion
+
+        corrected a warning
+
+    v0.4.7 beta 1, Saturday, 11, August, 2001, 0:21
+        apply_options(): added security checks to forbid dangerous functions
+        in href and src templates
+
+    v0.4.7 beta 1, Friday, 10 August, 2001, 23:50
+        convert_entities(): corrected another bug in the regexp that close
+        incorrect named entities; now it should work in most cases
+
+    v0.4.7 beta 1, Thursday, 9 August, 2001, 21:54
+        get_url(): corrected a bug reported by Igor Khristophorov
+
+        convert_entities(): corrected a bug in the regexp that close
+        incorrect named entities
+
+        html2wml(): added a fix for badly formed DOCTYPE (pointed by Igor
+        Khristophorov)
+
+    v0.4.6, Tuesday, 31 July, 2001, 15:17
+        some clean-ups
+
+    v0.4.6, Tuesday, 31 July, 2001, 13:34
+        added code to handle unclosed named entities
+
+        corrected a small bug in the code that handle unclosed numeric
+        entities
+
+    v0.4.6, Tuesday, 31 July, 2001, 12:14
+        corrected a mistake in the handling of frames and image maps links
+        (pointed by Igor Khristophorov)
+
+    v0.4.6 pre 6, Tuesday, 15 July, 2001, 0:18
+        in CGI mode, now always converts options to their short names
+
+        split_card(): corrected a small bug: respect server port
+
+    v0.4.6 pre 6, Sunday, 15 July, 2001, 1:04
+        changed a few things to clearly indicate the static configurable
+        part of the code
+
+    v0.4.6 pre 6, Thursday, 12 July, 2001, 22:22
+        corrected a stupid bug (pointed by Werner Heuser)
+
+    v0.4.6 pre 5, Tuesday, 10 July, 2001, 0:53
+        corrected some bugs that were occuring when processing image maps
+
+        corrected a few other bugs
+
+        changed a little the presentation of the source code
+
+    v0.4.6 pre 5, Monday, 9 July, 2001, 23:26
+        html2wml(): corrected a bug: https urls weren't handled correctly
+
+        the LWP agent is now created only once per session
+
+        added a few collapsing rules
+
+    v0.4.6 pre 4, Monday, 9 July, 2001, 1:04
+        get_url(): corrected two bugs; HTTP authentication is beginning to
+        work
+
+        xlate_url(): corrected a bug: respect server port when creating
+        relative URLs in CGI mode
+
+    v0.4.6 pre 3, Wednesday, 4 July, 2001, 0:56
+        work in progress: HTTP authentication support
+
+    v0.4.6 pre 3, Tuesday, 3rd July, 2001, 23:42
+        added function cgi_error()
+
+    v0.4.6 pre 2, Tuesday, 26 June, 2001, 1:35
+        added option -o, --output to write result to the given file instead
+        of stdout
+
+    v0.4.6 pre 1, Tuesday, 26 June, 2001, 0:53
+        opening tags forbidden inside <a> tags
+
+    v0.4.5r2, Tuesday, 26 June, 2001, 1:12
+        split_card(): corrected a bug (deck-split in non-cgi mode)
+
+        some warnings were corrected
+
+    v0.4.5, Friday, 21st June, 2001, 1:27
+        corrected several warnings; this also add another correction for
+        very bad HTML documents
+
+    v0.4.5, Friday, 21st June, 2001, 0:35
+        added support for rendering <frameset> and <area> tags
+
+    v0.4.5, Thursday, 20 June, 2001, 0:36
+        added full support for Latin Extended-A entities plus some other non
+        standard entities
+
+    v0.4.4r3, Wednesday, 20 June, 2001, 23:19
+        split_card(): doc_uri is a server-relative URL whenever possible in
+        order to save up a few bytes
+
+    v0.4.4r2, Wednesday, 20 June, 2001, 22:50
+        id bug corrected (Igor Khristophorov)
+
+    v0.4.4, Tuesday, 19 June, 2001, 1:56
+        corrected a bug when closing anchor tags
+
+    v0.4.4, Sunday, 17 June, 2001, 23:17
+        collapse_spaces(): some improvments
+
+    v0.4.4, Sunday, 17 June, 2001, 22:15
+        added support for some non-standard entities
+
+    v0.4.4 pre 2, Thursday, 13rd June, 2001, 21:32
+        post_conversion_cleanup(): special characters present in a title are
+        now converted (bug pointed by Igor Khristophorov)
+
+    v0.4.4 pre 1, Thursday, 13rd June, 2001, 1:53
+        some bugs corrections
+
+    v0.4.4 beta 4, Thursday, 13rd June, 2001, 1:53
+        xlate_url(): a part of the link is now generated only once, which
+        should give a nice code speedup
+
+    v0.4.4 beta 3, Thursday, 13rd June, 2001, 1:27
+        htmlize(): links are now clickable
+
+        xlate_url(): now uses ';' as parameter separator instead of '&'
+
+    v0.4.4 beta 3, Thursday, 13rd June, 2001, 1:08
+        early support for deck splitting (in CGI mode only)
+
+    v0.4.4 beta 2, Thursday, 13rd June, 2001, 0:39
+        small changes in the settings of the HTML parser
+
+    v0.4.4 beta 1, Thursday, 13rd June, 2001, 23:32
+        bug correction: HTML pure anchors (tag A with only a NAME attribute)
+        are now correctly converted to WML anchors
+
+    v0.4.3, Sunday, June 3rd, 2001
+        split_card(): added a [prev] link; label is controled by the
+        `--prev-card-label' option
+
+        documentation updated
+
+    v0.4.3 pre 4, Saturday, June 2nd, 2001
+        short options are available; they sould be used in the CGI mode in
+        order to save up some bytes
+
+        xlate_url(): in CGI mode, generated URLs use server-relative URLs in
+        order to save up a few bytes per link
+
+        htmlize(): small improvments in the syntax highlighting
+
+    v0.4.3 pre 3, Thursday, May 30, 2001
+        HTTP headers: corrected the charset attribute; added the
+        Content-Length header
+
+        added timing in the debug mode
+
+    v0.4.3 pre 3, Wednesday, May 30, 2001
+        unclosed numeric entites are now closed (after a question from
+        Daniele Frijia)
+
+    v0.4.3 pre 3, Tuesday, May 29, 2001
+        xlate_url(): in CGI mode, generated URLs no longer use the absolute
+        URL of the CGI in order to save up a few bytes per link; suggestion
+        of Igor Khristophorov
+
+    v0.4.3 pre 2, Sunday, May 27, 2001
+        the `--img-alt-text' option should now work correctly
+
+        doc updated
+
+    v0.4.3 pre 2, Saturday, May 26, 2001
+        first attempts to fix some new bugs found by Igor Khristophorov
+
+    v0.4.3 pre 1, Friday, May 25, 2001
+        added the `--img-alt-text' option to control whether the images are
+        replaced by their alternative text; on by default; thanks to Igor
+        Khristophorov for the suggestion
+
+    v0.4.3 pre 1, Thursday, May 24, 2001
+        cleaned up my debugging code; added the `debug()' function
+
+        corrected a weird bug pointed by Igor Khristophorov
+
+        several internal cleans-up
+
+        added support for sending compiled WML
+
+        added support for sending encoding information (from the patch
+        submitted by Igor Khristophorov)
+
+        added the `--numeric-non-ascii' option to control whether the
+        non-ASCII characters are converted into numeric entities; off by
+        default
+
+    v0.4.2, Saturday, May 12, 2001
+        non-ASCII characters are now converted to numeric entities
+
+        alone ampersand characters are now converted to the corresponding
+        entity
+
+    v0.4.2, Tuesday, May 8, 2001
+        corrected a small bug that prevent proper handling of https URLs
+
+        corrected a small mistake in the HTML syntax highlight
+
+        changed a few things in the doc
+
+    v0.4.1, Saturday, April 21st, 2001
+        changed the default maximum size of a card to 1,000 bytes
+
+        corrected a mistake in the doc
+
+    v0.4.1, Sunday, April 1st, 2001
+        debug mode doesn't use Text::Wrap anymore, it's really too messy.
+        I've written a small function, `simple_wrap()', that does what I had
+        in mind
+
+        added support for very bad-formed HTML documents (with no HTML or
+        BODY tags)
+
+        added the `--ignore-images' option
+
+    v0.4.0, Friday, March 9, 2001
+        corrected a small bug in doc/Makefile
+
+        added a section to the documentation
+
+    v0.4.0, Thursday, March 8, 2001
+        complete update of the documentation
+
+    v0.4.0 beta 4, Monday, January 24, 2001
+        improved the debug mode: now use Text::Wrap to avoid very long lines
+
+    v0.4.0 beta 3, Monday, January 22, 2001
+        corrected the parts of the code that generated the bunch of
+        warnings; some of the bugfixes should speed up the code a little
+
+        lowered the default `max-card-size' value to 1,500 bytes
+
+    v0.4.0 beta 2, Saturday, January 20, 2001
+        added attributes conversion
+
+    v0.4.0 beta 1, Friday, January 19, 2001
+        the software is now correctly packaged, and has a Makefile that
+        checks the system configuration and installs the software and the
+        documentation
+
+        changed the link reconstruction engine: it now uses Text::Template,
+        so you can do whatever you want with the links
+
+    v0.3.9, Sunday, January 07, 2001
+        added support to compile WML using the compiler from WML Tools
+
+    v0.3.9 beta 1, Tuesday, January 02, 2001
+        corected a small internal flaw: now, in CGI mode, if the `url'
+        parameter has no value, use / as a default value
+
+    v0.3.8, Saturday, December 30, 2000
+        corrected a small bug in the link reconstruction engine
+
+        the `card-split-threshold' was not available because of a mistake;
+        this is correctd
+
+        the way spaces are collapsed has been changed a little
+
+        the `no-pre' option is now `nopre'
+
+    v0.3.7, Friday, December 29, 2000
+        corrected a bug when getting the document title
+
+        corrected a bug in the text handler (skip mode was ignored)
+
+        ampersand characters are now escaped in URLs
+
+        added the `no-pre' option to disable the use of the `pre' tag
+
+    v0.3.6, Saturday, December 23, 2000
+        cleaned up things in the card splitting process; this correct a bug
+        that could occur in certain circumstances
+
+        documentation has been updated
+
+    v0.3.5, Saturday, December 23, 2000
+        dollar caracters are now escaped
+
+        added a small HTML syntax highlighting when debugging in CGI mode
+
+        several bug corrections and improvments in the syntax correction
+        engine
+
+        named HTML entities are now converted to numeric entities, this is
+        safer because direct conversion to Unicode didn't seem to work
+
+        corrected the links reconstruction engine
+
+        named entities are now also converted when in attributes
+
+    v0.3.5 beta 1, Thursday, December 21, 2000
+        new feature: the size of the cards can be limited using the
+        `max-card-size' option
+
+    v0.3.4, Wednesday, December 20, 2000
+        corrected a bug in the de-nesting process
+
+        added features to the links reconstruction engine
+
+        corrected the local file disclosure vulnerability
+
+        until now, captions tags were always skipped; now they appears when
+        tables are linearized
+
+    v0.3.3, Monday, December 18, 2000
+        named entities are converted to real Unicode characters
+
+        non-breaking spaces (&nbsp;) are converted to spaces
+
+    v0.3.3 beta 4, Friday, December 15, 2000
+        links reconstruction is finalized
+
+    v0.3.3 beta 3, Friday, December 15, 2000
+        added the `ascii' option to convert entities to US-ASCII
+
+    v0.3.3 beta 2, Friday, December 15, 2000
+        named entities conversion is finalized
+
+    v0.3.3 beta 1, Friday, December 14, 2000
+        added preliminary support for named entities conversion and images
+        support
+
+    v0.3.2, Thursday, December 13, 2000
+        oops! file download was broken in 0.3.1; this is corrected now
+
+        ampersand are now coded as &amp; in links
+
+        a long standing bug that appeared in some cirumstances has been
+        fixed
+
+    v0.3.1, Tuesday, December 12, 2000
+        added a small SSI-like engine (not heavily tested)
+
+        corrected a stupid bug: I forgot to add the line that translate the
+        internal links so that the urls point to the CGI
+
+        modification of the user agent signature so that it includes the
+        signature of the original client
+
+        rendering of header tags H1, H2 and H3 has been improved
+
+        added a links reconstruction engine (currently unfinished)
+
+        improved the debug mode when launched from shell
+
+    v0.3.0, Sunday, December 10, 2000
+        the syntax repair engine has been improved and should now be able to
+        correct most usual HTML pages (I hope)
+
+    v0.3.0 beta 6, Saturday, December 9, 2000
+        corrected a stupid bug in the CGI mode
+
+        added the `debug' option
+
+        corrected some mistakes in the documentation
+
+        added the LINKS section in the documentation
+
+        added several improvements and corrected several bugs
+
+    v0.3.0 beta 5, Thursday, December 6, 2000
+        added the `collapse' option to control whether redundant white space
+        chars are kept or not
+
+        added the documentation for the options
+
+    v0.3.0 beta 4, Monday, December 4, 2000
+        added the `linearize' option (on by default) so that it linearizes
+        tables
+
+        normal texts (i.e. not inside <pre> tags) are cleaned by stripping
+        multiples spaces and lines
+
+        the syntax repair engine has been rewritten, but it does not work in
+        all cases
+
+    v0.3.0 beta 3, Sunday, November 19, 2000
+        first try to add syntax check/repair
+
+    v0.2.3, Saturday, November 18, 2000
+        added URI translation
+
+    v0.2.2, Thursday, November 15, 2000
+        added XML checker; the output is given to Expat to check that it is
+        well-formed XML. Note that XML::Parser is loaded on demand.
+
+        added options support (using Getopt::Long)
+
+    v0.2.1, Tuesday, November 14, 20000
+        cleaned up a few things;
+
+        added some attributes to the allow list
+
+        added url resolution
+
+    v0.2.0, Saturday, November 11, 2000
+        first functional version; now uses HTML::Parser v3
+
+    v0.1.0, Friday, November 10, 2000
+        prototype version
+
